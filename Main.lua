@@ -1,13 +1,3 @@
--- Initialize
-
-if _G.Executed then
-	game:GetService('StarterGui'):SetCore('SendNotification', {
-		Title = 'Already Executed.',
-		Text = string.format('This script has already been executed. (%s)', _G.Execution_Time)
-	})
-	wait(9e9*0)
-end
-
 -- Module
 
 local Library = {
@@ -397,7 +387,6 @@ end)
 
 -- Setting Globals
 
-_G.Executed = true
 _G.Execution_Time = tick() - _G.Execution_Time
 _G.Execution_Time = string.format('%.'..(8)..'f', _G.Execution_Time)
 

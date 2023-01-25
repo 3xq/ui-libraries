@@ -26,6 +26,8 @@ function module:window(configuration)
 	Main.Position = UDim2.new(0.297619045, 0, 0.243209884, 0)
 	Main.Size = UDim2.new(0, 612, 0, 416)
 	
+	local UserInputService = game:GetService("UserInputService")
+	
 	local dragging
 	local dragInput
 	local dragStart

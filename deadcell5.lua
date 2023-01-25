@@ -767,7 +767,7 @@ function module:window(configuration)
 					TextLabel_2.Parent = Frame
 					TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 					TextLabel_2.BackgroundTransparency = 1.000
-					TextLabel_2.Position = UDim2.new(0, 5, 0, -1)
+					TextLabel_2.Position = UDim2.new(0, 5, 0, 0)
 					TextLabel_2.Size = UDim2.new(1, 0, 1, 0)
 					TextLabel_2.Font = Enum.Font.SourceSans
 					TextLabel_2.Text = default
@@ -1178,7 +1178,7 @@ function module:window(configuration)
 				TextLabel_2.Parent = Frame
 				TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 				TextLabel_2.BackgroundTransparency = 1.000
-				TextLabel_2.Position = UDim2.new(0, 5, 0, -1)
+				TextLabel_2.Position = UDim2.new(0, 5, 0, 0)
 				TextLabel_2.Size = UDim2.new(1, 0, 1, 0)
 				TextLabel_2.Font = Enum.Font.SourceSans
 				TextLabel_2.Text = default

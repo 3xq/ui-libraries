@@ -796,6 +796,7 @@ function module:window(configuration)
 					ScrollingFrame.Position = UDim2.new(0, 1, 0, 1)
 					ScrollingFrame.Size = UDim2.new(1, -2, 1, -2)
 					ScrollingFrame.ScrollBarThickness = 0
+					ScrollingFrame.ZIndex = 10
 
 					UIListLayout.Name = ""
 					UIListLayout.Parent = ScrollingFrame
@@ -1206,6 +1207,7 @@ function module:window(configuration)
 				ScrollingFrame.Position = UDim2.new(0, 1, 0, 1)
 				ScrollingFrame.Size = UDim2.new(1, -2, 1, -2)
 				ScrollingFrame.ScrollBarThickness = 0
+				ScrollingFrame.ZIndex = 10
 
 				UIListLayout.Name = ""
 				UIListLayout.Parent = ScrollingFrame

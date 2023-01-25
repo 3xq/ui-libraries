@@ -25,6 +25,44 @@ function module:window(configuration)
 	Main.BorderSizePixel = 0
 	Main.Position = UDim2.new(0.297619045, 0, 0.243209884, 0)
 	Main.Size = UDim2.new(0, 612, 0, 416)
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+
+	local function update(input)
+		local delta = input.Position - dragStart
+		Main.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+
+	Main.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = Main.Position
+
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+
+	Main.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			if Main.Visible then
+				update(input)
+			end
+		end
+	end)
 
 	border.Name = "border"
 	border.Parent = Main
@@ -487,7 +525,7 @@ function module:window(configuration)
 					UIGradient.Enabled = not default
 					
 					local h,s,v = configuration['theme']:ToHSV()
-					local darker_theme = Color3.fromHSV(h,s,v-.4)
+					local darker_theme = Color3.fromHSV(h,s,v-.2)
 					
 					UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, configuration['theme'] or Color3.fromRGB(201, 111, 131)), ColorSequenceKeypoint.new(1.00, darker_theme or Color3.fromRGB(165, 79, 95))}
 					UIGradient_2.Rotation = 90
@@ -607,7 +645,7 @@ function module:window(configuration)
 					TextButton.AutoButtonColor = false
 					
 					local h,s,v = configuration['theme']:ToHSV()
-					local darker_theme = Color3.fromHSV(h,s,v-.4)
+					local darker_theme = Color3.fromHSV(h,s,v-.2)
 					
 					UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, configuration['theme'] or Color3.fromRGB(201, 111, 131)), ColorSequenceKeypoint.new(1.00, darker_theme or Color3.fromRGB(165, 79, 95))}
 					UIGradient_2.Rotation = 90
@@ -912,7 +950,7 @@ function module:window(configuration)
 				UIGradient.Enabled = not default
 				
 				local h,s,v = configuration['theme']:ToHSV()
-				local darker_theme = Color3.fromHSV(h,s,v-.4)
+				local darker_theme = Color3.fromHSV(h,s,v-.2)
 
 				UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, configuration['theme'] or Color3.fromRGB(201, 111, 131)), ColorSequenceKeypoint.new(1.00, darker_theme or Color3.fromRGB(165, 79, 95))}
 				UIGradient_2.Rotation = 90
@@ -1025,7 +1063,7 @@ function module:window(configuration)
 				TextButton.AutoButtonColor = false
 				
 				local h,s,v = configuration['theme']:ToHSV()
-				local darker_theme = Color3.fromHSV(h,s,v-.4)
+				local darker_theme = Color3.fromHSV(h,s,v-.2)
 				
 				UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, configuration['theme'] or Color3.fromRGB(201, 111, 131)), ColorSequenceKeypoint.new(1.00, darker_theme or Color3.fromRGB(165, 79, 95))}
 				UIGradient_2.Rotation = 90
